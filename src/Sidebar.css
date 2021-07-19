@@ -1,11 +1,15 @@
-.sidebar_compose{
+.sidebar > Button{
   margin-top: 20px;
   margin-left: 10px;
-  margin-bottom: 1px;
+  margin-bottom: 10px;
   text-transform: capitalize !important;
   color: gray ;
   padding: 15px;
-  border-radius: 50px;
+  border-radius: 34px;
   box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302),0 1px 3px 1px rgba(60,64,67,0.149);
   border: 2pxsolid whitesmoke;
+  height: 48px;
+  font-family: 'Google Sans', Roboto,RobotoDraft,Helvetica,Arial,sans-serif !important;
+  font-size: .875rem !important;
+  font-weight: 500 !important
 }
