@@ -2,13 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid whitesmoke
+  border-bottom: 1px solid whitesmoke;
+  position: sticky;
+  z-index: 999;
 }
 
 .header_left{
   display: flex;
   align-items: center;
-  flex: 0.15;
+/*I didnt define flex here I wanted to define width instead*/
+  max-width: 300px;
 }
 
 
@@ -21,7 +24,7 @@
 .header_middle {
   display: flex;
   align-items: center;
-  flex: 0.6;
+  flex: 0.5;
   background-color: whitesmoke;
   padding: 10px;
   border-radius: 5px;
@@ -45,7 +48,7 @@ background-color: transparent;
 }
 
 .header_right{
-
+  flex: 0.35;
   display: flex;
   justify-content: flex-end;
   padding-right: 20px;

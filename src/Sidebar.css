@@ -1,3 +1,10 @@
+.sidebar{
+  flex: 0.3;
+  max-width: 300px;
+}
+
+
+
 .sidebar > Button{
   margin-top: 20px;
   margin-left: 10px;
@@ -12,4 +19,11 @@
   font-family: 'Google Sans', Roboto,RobotoDraft,Helvetica,Arial,sans-serif !important;
   font-size: .875rem !important;
   font-weight: 500 !important
+}
+
+
+
+.sidebar_footer{
+  display: flex;
+  justify-content: center;
 }
