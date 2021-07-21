@@ -58,6 +58,12 @@ function EmailList() {
         <EmailRow
           title="Linkedin"
           subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
           description="this is a test"
           time="10pm"
         />

@@ -1,6 +1,7 @@
 .emailList{
   flex: 1;
   overflow: scroll; /*make the whol email list able to scroll up and down*/
+  padding-left: 20px;
 }
 
 .emailList_settings{
