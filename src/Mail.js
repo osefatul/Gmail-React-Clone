@@ -11,8 +11,8 @@ import {
   Print,
   UnfoldMore,
   WatchLater,
+  LabelImportant,
 } from "@material-ui/icons";
-import LabelImportant from "@material-ui/icons/LabelImportant";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./Mail.css";
@@ -64,7 +64,15 @@ function Mail() {
           </IconButton>
         </div>
       </div>
-      <h1>Whatssss up boysss !!</h1>
+      <div className="mail_body">
+        <div className="mail_bodyHeader">
+          <h2>Subject</h2>
+          <LabelImportant className="mail_importatn" />
+          <p>Title</p>
+          <p>10pm</p>
+        </div>
+        <div className="mail_message">This is a Message</div>
+      </div>
     </div>
   );
 }
