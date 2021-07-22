@@ -38,7 +38,7 @@ color: gray;
 }
 
 .header_middle >input {
-border: none;
+border: 0;
 width: 100%;
 padding: 8px;
 outline-width: 0;
