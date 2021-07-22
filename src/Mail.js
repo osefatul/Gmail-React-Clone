@@ -67,11 +67,13 @@ function Mail() {
       <div className="mail_body">
         <div className="mail_bodyHeader">
           <h2>Subject</h2>
-          <LabelImportant className="mail_importatn" />
+          <LabelImportant className="mail_important" />
           <p>Title</p>
-          <p>10pm</p>
+          <p className="mail_time">10pm</p>
         </div>
-        <div className="mail_message">This is a Message</div>
+        <div className="mail_message">
+          <p>This is the Message</p>
+        </div>
       </div>
     </div>
   );
