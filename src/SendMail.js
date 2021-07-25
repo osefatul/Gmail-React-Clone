@@ -3,9 +3,14 @@ import React from "react";
 import CloseIcon from "@material-ui/icons/Close";
 import { Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 function SendMail() {
   //we are using a react hook to modify Form
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -20,14 +25,35 @@ function SendMail() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
-          {...register("test", { required: true })} //this is registering this element to the React form hook
-          name="to"
+          // name= "to" using for reference to the element.
+          //required: true the input value must be Required otherwise will not be submitted.
+          //required:"must be submitted": if there was no value this message will be shown
+          {...register("to", { required: true })}
           placeholder="To"
           type="text"
         />
-        <input name="subject" placeholder="Subject" type="text" />
+
+        {/*This is one way of writing Error message for required field */}
+        <ErrorMessage
+          errors={errors}
+          name="to"
+          message={<p className="error_message">To is required</p>}
+        />
+
         <input
-          name="message"
+          //this indiacted that the there must be a value before submission
+          {...register("subject", { required: true })}
+          placeholder="Subject"
+          type="text"
+        />
+
+        {/*This is another way of writing Error message for required field */}
+
+        {errors.subject && (
+          <p className="error_message"> Subject is required </p>
+        )}
+        <input
+          {...register("message", { required: true })}
           placeholder="Message..."
           type="text"
           className="sendMail_message"

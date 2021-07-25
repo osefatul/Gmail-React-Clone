@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchCount } from "./counterAPI";
 
 const initialState = {
-  sendMessageIsOpen: false,
+  sendMessageIsOpen: true,
 };
 
 export const mailSlice = createSlice({
