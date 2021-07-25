@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { useDispatch } from "react-redux";
 import { closeSendMessage } from "./features/mailSlice";
+import { db } from "./firebase";
+import firebase from "firebase";
 function SendMail() {
   const dispatch = useDispatch();
 
@@ -16,8 +18,20 @@ function SendMail() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (formData) => {
+    console.log(formData);
+
+    //go to the emails collection on the DB. everytime we submit we push the data to DB
+    db.collection("emails").add({
+      to: formData.to,
+      subject: formData.subject,
+      message: formData.message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+
+    //Once we send the mail to DB then we should close the form
+
+    dispatch(closeSendMessage());
   };
 
   return (
@@ -65,6 +79,10 @@ function SendMail() {
           type="text"
           className="sendMail_message"
         />
+
+        {errors.message && (
+          <p className="error_message"> Message is required </p>
+        )}
 
         <div className="sendMail_options">
           <Button

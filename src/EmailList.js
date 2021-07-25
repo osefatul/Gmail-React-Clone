@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Checkbox, IconButton } from "@material-ui/core";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import RedoIcon from "@material-ui/icons/Redo";
@@ -14,8 +14,26 @@ import EmailRow from "./EmailRow";
 
 import "./EmailList.css";
 import Section from "./Section";
+import { db } from "./firebase";
 
 function EmailList() {
+  const [emails, setEmails] = useState([]);
+
+  useEffect(() => {
+    //snapshot is a realtime listener, if the database of emails is being modified or something has been added to it, then get that and run it again and then put it back on setEmails variable. docs are the each record of submitting email form [to,subjec,messafe]
+
+    db.collection("emails")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setEmails(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
   return (
     <div className="emailList">
       <div className="emailList_settings">
@@ -55,6 +73,126 @@ function EmailList() {
       </div>
 
       <div className="emailList_list">
+        {emails.map(({ id, data: { to, subject, message, timestamp } }) => {
+          return (
+            <EmailRow
+              id={id}
+              key={id}
+              title={to}
+              subject={subject}
+              description={message}
+              time={new Date(timestamp?.seconds * 1000).toUTCString()}
+            />
+          );
+        })}
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Linkedin"
+          subject="Hi dear followers"
+          description="this is a test this is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a testthis is a test"
+          time="10pm"
+        />
+        <EmailRow
+          title="Facebook"
+          subject="Hi dear followers"
+          description="this is a test"
+          time="10pm"
+        />
         <EmailRow
           title="Linkedin"
           subject="Hi dear followers"
