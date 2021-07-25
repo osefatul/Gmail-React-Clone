@@ -8,7 +8,7 @@ import EmailList from "./EmailList";
 import SendMail from "./SendMail";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSendMessageIsOpen } from "./features/mailSlice";
-import { selectUser } from "./features/userSlice";
+import { login, selectUser } from "./features/userSlice";
 import Login from "./Login";
 import { auth } from "./firebase";
 
@@ -17,11 +17,18 @@ function App() {
   const sendMessageIsOpen = useSelector(selectSendMessageIsOpen);
   const dispatch = useDispatch();
 
+  //persistent Login, whenever we refresh we shouldnt be asked for login again.
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         //the user is loggedIn
-        dispatch(login);
+        dispatch(
+          login({
+            displayName: user.displayName,
+            email: user.email,
+            photoUrl: user.photoURL,
+          })
+        );
       } else {
       }
     });
