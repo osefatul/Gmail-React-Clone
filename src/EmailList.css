@@ -1,3 +1,5 @@
+
+
 .emailList{
   flex: 1;
   overflow: scroll; /*make the whol email list able to scroll up and down*/
@@ -13,11 +15,9 @@
   } 
 
 
-
 .emailList::-webkit-scrollbar {
   display: none;
 }
-
 
 
 
