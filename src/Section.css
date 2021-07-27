@@ -25,9 +25,21 @@
 }
 
 
+.emailList_list {
+  padding-bottom: 20px;
+}
+
+.emailList_sections{
+  display: flex;
+  position: sticky;
+  top: 0;
+  border-top: 1px solid whitesmoke;
+  background-color: white;
+  z-index: 999;
+}
 
 
-
-
-
+.tabs_section{
+display: flex;
+}
 
